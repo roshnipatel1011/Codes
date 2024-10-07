@@ -1,0 +1,32 @@
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        // Initialize three pointers:
+        // p1: to track the last element of nums1 (considering only the first m elements)
+        // p2: to track the last element of nums2
+        // p: to track the position to be filled in nums1
+        int p1 = m - 1;
+        int p2 = n - 1;
+        int p = m + n - 1;
+
+        // Start merging from the back of nums1 to avoid overwriting elements in nums1
+        while (p1 >= 0 && p2 >= 0) {
+            // Compare elements from nums1 and nums2, and place the larger element at position 'p'
+            if (nums1[p1] > nums2[p2]) {
+                nums1[p] = nums1[p1];
+                p1--;
+            } else {
+                nums1[p] = nums2[p2];
+                p2--;
+            }
+            p--;
+        }
+
+        // If there are remaining elements in nums2, copy them into nums1
+        // (No need to check for remaining elements in nums1 because they are already in place)
+        while (p2 >= 0) {
+            nums1[p] = nums2[p2];
+            p2--;
+            p--;
+        }
+    }
+}
