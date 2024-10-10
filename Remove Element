@@ -1,0 +1,19 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        // Pointer to track the position of non-val elements
+        int i = 0;
+        
+        // Iterate through the array
+        for (int j = 0; j < nums.length; j++) {
+            // If the current element is not equal to val
+            if (nums[j] != val) {
+                // Place it at the index i and increment i
+                nums[i] = nums[j];
+                i++;
+            }
+        }
+        
+        // Return the number of elements not equal to val
+        return i;
+    }
+}
